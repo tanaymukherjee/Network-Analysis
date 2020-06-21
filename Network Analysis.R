@@ -109,3 +109,64 @@ g4s
 # (v/c) - vertex-level character attribute
 # (e/n) - edge-level numeric attribute
 
+
+
+#-------Specific graphs and graph models--------
+
+# Empty graph
+eg <- make_empty_graph(40)
+plot(eg, vertex.size=10, vertex.label=NA)
+
+# Full graph
+fg <- make_full_graph(40)
+plot(fg, vertex.size=10, vertex.label=NA)
+
+# Star graph 
+st <- make_star(40)
+plot(st, vertex.size=10, vertex.label=NA) 
+
+# Tree graph
+tr <- make_tree(40, children = 3, mode = "undirected")
+plot(tr, vertex.size=10, vertex.label=NA) 
+
+# Ring graph
+rn <- make_ring(40)
+plot(rn, vertex.size=10, vertex.label=NA)
+
+# Erdos-Renyi random graph 
+# ('n' is number of nodes, 'm' is the number of edges)
+er <- sample_gnm(n=100, m=40) 
+plot(er, vertex.size=6, vertex.label=NA)  
+
+# Watts-Strogatz small-world graph
+# Creates a lattice with 'dim' dimensions of 'size' nodes each, and rewires edges 
+# randomly with probability 'p'. You can allow 'loops' and 'multiple' edges.
+# The neighborhood in which edges are connected is 'nei'.
+sw <- sample_smallworld(dim=2, size=10, nei=1, p=0.1)
+plot(sw, vertex.size=6, vertex.label=NA, layout=layout_in_circle)
+
+# Barabasi-Albert preferential attachment model for scale-free graphs
+# 'n' is number of nodes, 'power' is the power of attachment (1 is linear)
+# 'm' is the number of edges added on each time step 
+ba <-  sample_pa(n=100, power=1, m=1,  directed=F)
+plot(ba, vertex.size=6, vertex.label=NA)
+
+#igraph can also give you some notable historical graphs. For instance:
+zach <- graph("Zachary") # the Zachary carate club
+plot(zach, vertex.size=10, vertex.label=NA)
+
+# Rewiring a graph
+# 'each_edge()' is a rewiring method that changes the edge endpoints
+# uniformly randomly with a probability 'prob'.
+rn.rewired <- rewire(rn, each_edge(prob=0.1))
+plot(rn.rewired, vertex.size=10, vertex.label=NA)
+
+# Rewire to connect vertices to other vertices at a certain distance. 
+rn.neigh = connect.neighborhood(rn, 5)
+plot(rn.neigh, vertex.size=8, vertex.label=NA) 
+
+
+# Combine graphs (disjoint union, assuming separate vertex sets): %du%
+plot(rn, vertex.size=10, vertex.label=NA) 
+plot(tr, vertex.size=10, vertex.label=NA) 
+plot(rn %du% tr, vertex.size=10, vertex.label=NA) 
