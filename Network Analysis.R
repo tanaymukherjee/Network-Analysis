@@ -5,7 +5,7 @@
 # Remove all the objects we created so far.
 rm(list = ls()) 
 
-# Load [Libraries]ackages
+# Load Packages
 library(igraph)
 
 #-------Create networks--------
