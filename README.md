@@ -12,5 +12,9 @@ The network analysis packages need data to be in a particular form to create the
 
 An edge list is a data frame that contains a minimum of two columns, one column of nodes that are the source of a connection and another column of nodes that are the target of the connection. The nodes in the data are identified by unique IDs. If the distinction between source and target is meaningful, the network is directed. If the distinction is not meaningful, the network is undirected. With the example of letters sent between cities, the distinction between source and target is clearly meaningful, and so the network is directed. For the examples below, I will name the source column as “from” and the target column as “to”. I will use integers beginning with one as node IDs. An edge list can also contain additional columns that describe attributes of the edges such as a magnitude aspect for an edge. If the edges have a magnitude attribute the graph is considered weighted.
 
+## Analysis:
+1. The R file and the RMD files are shared in the root directory fo this repository. The relevant data for the exercise is shared within the data folder.
+2. The analysis with all the plots and output can be find [here](https://github.com/tanaymukherjee/Network-Analysis/blob/master/Network-Analysis.pdf).
+
 ## References:
 https://www.jessesadler.com/post/network-analysis-with-r/
